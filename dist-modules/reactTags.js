@@ -32,6 +32,7 @@ var ReactTags = React.createClass({
     handleInputChange: React.PropTypes.func,
     minQueryLength: React.PropTypes.number,
     removeComponent: React.PropTypes.func,
+    filterSuggestions: React.PropTypes.bool,
     autocomplete: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.number])
   },
   getDefaultProps: function getDefaultProps() {
@@ -44,7 +45,8 @@ var ReactTags = React.createClass({
       inline: true,
       allowDeleteFromEmptyInput: true,
       minQueryLength: 2,
-      autocomplete: false
+      autocomplete: false,
+      filterSuggestions: true
     };
   },
   componentDidMount: function componentDidMount() {
@@ -61,6 +63,9 @@ var ReactTags = React.createClass({
     };
   },
   filteredSuggestions: function filteredSuggestions(query, suggestions) {
+    if (!this.props.filterSuggestions) {
+      return suggestions;
+    }
     return suggestions.filter(function (item) {
       return item.toLowerCase().indexOf(query.toLowerCase()) === 0;
     });
@@ -207,7 +212,7 @@ var ReactTags = React.createClass({
       { className: 'ReactTags__tagInput' },
       React.createElement('input', { ref: 'input',
         type: 'text',
-        placeholder: placeholder,
+        placeholder: tagItems.length ? '' : placeholder,
         'aria-label': placeholder,
         onChange: this.handleChange,
         onKeyDown: this.handleKeyDown }),
