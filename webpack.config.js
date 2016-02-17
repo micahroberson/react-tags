@@ -9,8 +9,7 @@ module.exports = {
     },
     externals: {
         'react': 'React',
-        'react-dom': 'ReactDOM',
-        'react-dnd': 'ReactDnD'
+        'react-dom': 'ReactDOM'
     },
     output: {
         filename: "dist/ReactTags.min.js",

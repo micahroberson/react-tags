@@ -15,14 +15,6 @@ var Countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla"
       ,"Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)"
       ,"Yemen","Zambia","Zimbabwe"];
 
-/*
- * If your app already uses react-dnd, then having multiple
- * backend will raise an integrity violation exception. In such cases
- * use the WithOutContext version of the component.
- * var Tags = ReactTags.WithOutContext;
- * The example below uses the `WithoutContext` since this the sole component
- * using the react-dnd component.
-*/
 var Tags = ReactTags.WithOutContext;
 
 var App = React.createClass({
