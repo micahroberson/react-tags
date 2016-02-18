@@ -67,7 +67,7 @@ var ReactTags = React.createClass({
       return suggestions;
     }
     return suggestions.filter(function (item) {
-      return item.toLowerCase().indexOf(query.toLowerCase()) === 0;
+      return item.text.toLowerCase().indexOf(query.toLowerCase()) === 0;
     });
   },
   componentWillReceiveProps: function componentWillReceiveProps(props) {
@@ -184,7 +184,7 @@ var ReactTags = React.createClass({
     input.focus();
   },
   handleSuggestionClick: function handleSuggestionClick(i, e) {
-    this.addTag(this.state.suggestions[i]);
+    this.addTag(this.state.suggestions[i].text);
   },
   handleSuggestionHover: function handleSuggestionHover(i, e) {
     this.setState({

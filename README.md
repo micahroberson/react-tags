@@ -37,7 +37,7 @@ var App = React.createClass({
     getInitialState: function() {
         return {
             tags: [ {id: 1, text: "Apples"} ],
-            suggestions: ["Banana", "Mango", "Pear", "Apricot"]
+            suggestions: [{text: "Banana"}, {text: "Mango"}, {text: "Pear"}, {text: "Apricot"}]
         }
     },
     handleDelete: function(i) {
@@ -45,11 +45,11 @@ var App = React.createClass({
         tags.splice(i, 1);
         this.setState({tags: tags});
     },
-    handleAddition: function(tag) {
+    handleAddition: function(suggestion) {
         var tags = this.state.tags;
         tags.push({
             id: tags.length + 1,
-            text: tag
+            text: suggestion.text
         });
         this.setState({tags: tags});
     },
@@ -117,10 +117,10 @@ var tags =  [ {id: 1, text: "Apples"} ]
 
 <a name="suggestionsOption"></a>
 ##### suggestions (optional)
-An array of suggestions that are used as basis for showing suggestions. At the moment, this should be an array of strings.
+An array of suggestions that are used as basis for showing suggestions. At the moment, this should be an array of objects with a 'text' key.
 
 ```js
-var suggestions = ["mango", "pineapple", "orange", "pear"];
+var suggestions = [{text: "mango"}, {text: "pineapple"}, {text: "orange"}, {text: "pear"}];
 ```
 
 <a name="delimeters"></a>
@@ -154,7 +154,7 @@ This is useful if your data uses the `text` property for something else.
 Function called when the user wants to add a tag (either a click, a tab press or carriage return)
 
 ```js
-function(tag) {
+function(suggestion) {
     // add the tag to the tag list
 }
 ```

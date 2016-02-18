@@ -21,7 +21,7 @@ var App = React.createClass({
     getInitialState: function() {
         return {
             tags: [ {id: 1, text: "Thailand"}, {id: 2, text: "India"} ],
-            suggestions: Countries
+            suggestions: Countries.map(function(country) {return {text: country}})
         }
     },
     handleDelete: function(i) {
@@ -29,11 +29,11 @@ var App = React.createClass({
         tags.splice(i, 1);
         this.setState({tags: tags});
     },
-    handleAddition: function(tag) {
+    handleAddition: function(suggestion) {
         var tags = this.state.tags;
         tags.push({
             id: tags.length + 1,
-            text: tag
+            text: suggestion.text
         });
         this.setState({tags: tags});
     },
@@ -43,7 +43,7 @@ var App = React.createClass({
         return (
             <div>
                 <Tags tags={tags}
-                    suggestions={Countries}
+                    suggestions={suggestions}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
                     minQueryLength={2} />
